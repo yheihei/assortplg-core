@@ -299,7 +299,7 @@ class MailService
             ->setReplyTo($this->BaseInfo->getEmail03())
             ->setReturnPath($this->BaseInfo->getEmail04())
             ->setBody($body);
-
+        
         foreach ($AssortCartItems as $Assort) {
             $row_data = $Assort->getAssortImg();
             $data = split(",",$row_data)[1];

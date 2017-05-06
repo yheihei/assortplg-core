@@ -250,7 +250,7 @@ class ProductController
 
             if ($form->isValid()) {
                 $addCartData = $form->getData();
-                dump($addCartData); //yhei
+                //dump($addCartData); //yhei
                 if ($addCartData['mode'] === 'add_favorite') {
                     if ($app->isGranted('ROLE_USER')) {
                         $Customer = $app->user();

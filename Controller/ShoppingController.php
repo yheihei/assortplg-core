@@ -74,7 +74,7 @@ class ShoppingController extends AbstractController
         $cartService = $app['eccube.service.cart'];
         //yhei
         //dump('index');
-        dump($cartService->getCart());
+        //dump($cartService->getCart());
 
         // カートチェック
         if (!$cartService->isLocked()) {
@@ -129,7 +129,7 @@ class ShoppingController extends AbstractController
         $builder = $app['eccube.service.shopping']->getShippingFormBuilder($Order);
         
         //yhei
-        dump($cartService->getCart()->getCartItems());
+        //dump($cartService->getCart()->getCartItems());
         $AssortItems = null;
         foreach($cartService->getCart()->getCartItems() as $Item) {
             // Assortの商品があるかチェック
@@ -138,7 +138,7 @@ class ShoppingController extends AbstractController
                 $AssortItems[] = $Item;
             }
         }
-        dump($AssortItems);
+        //dump($AssortItems);
         
         //yhei
         /*
@@ -340,7 +340,8 @@ class ShoppingController extends AbstractController
             // メール送信
             $MailHistory = $app['eccube.service.shopping']->sendOrderMail($Order);
             */
-            if(!is_null($AssortItems)) {
+            //dump($AssortItems);
+            if(!is_null($AssortItems[0]->getAssort()[0])) {
                 $MailHistory = $app['eccube.service.shopping']->sendOrderAssortMail($Order, $AssortItems);
             } else {
                 $MailHistory = $app['eccube.service.shopping']->sendOrderMail($Order);
