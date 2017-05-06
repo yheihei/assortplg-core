@@ -300,6 +300,18 @@ class MailService
             ->setReturnPath($this->BaseInfo->getEmail04())
             ->setBody($body);
 
+        foreach ($AssortCartItems as $Assort) {
+            $row_data = $Assort->getAssortImg();
+            $data = split(",",$row_data)[1];
+            $name = $Assort->getObject()->getProduct()->getName();
+            $attachment = \Swift_Attachment::newInstance()
+            ->setFilename($name . '.png')
+            ->setContentType('image/png')
+            ->setBody(base64_decode($data))
+            ;
+            $message->attach($attachment);
+        }
+
         $event = new EventArgs(
             array(
                 'message' => $message,

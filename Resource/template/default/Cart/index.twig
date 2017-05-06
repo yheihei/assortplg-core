@@ -123,7 +123,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                     <div class="td table">
                                         <div id="cart_item_list__product_image" class="item_photo">
                                             <a  target="_blank" href="{{ url('product_detail', {id : Product.id} ) }}">
+                                                <!-- yhei -->
+                                                {% if CartItem.assort_img != null %}
+                                                <img src="{{ CartItem.assort_img }}" alt="{{ Product.name }}" />
+                                                {% else %}
                                                 <img src="{{ app.config.image_save_urlpath }}/{{ Product.MainListImage|no_image_product }}" alt="{{ Product.name }}" />
+                                                {% endif %}
                                             </a>
                                         </div>
                                         <dl class="item_detail">

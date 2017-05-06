@@ -121,6 +121,11 @@ class AddCartType extends AbstractType
                 array(
                     'data' => null,
                 )
+            )
+            ->add('assort_img','hidden',
+                array(
+                    'data' => null,
+                )
             );
 
         if ($Product->getStockFind()) {

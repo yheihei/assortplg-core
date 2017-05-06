@@ -342,29 +342,8 @@ class ShoppingController extends AbstractController
             */
             if(!is_null($AssortItems)) {
                 $MailHistory = $app['eccube.service.shopping']->sendOrderAssortMail($Order, $AssortItems);
-                /*
-                $event = new EventArgs(
-                    array(
-                        'form' => $form,
-                        'Order' => $Order,
-                        'MailHistory' => $MailHistory,
-                        'AssortCartItems' => $AssortItems,
-                    ),
-                    $request
-                );
-                */
             } else {
                 $MailHistory = $app['eccube.service.shopping']->sendOrderMail($Order);
-                /*
-                $event = new EventArgs(
-                    array(
-                        'form' => $form,
-                        'Order' => $Order,
-                        'MailHistory' => $MailHistory,
-                    ),
-                    $request
-                );
-                */
             }
             
             $event = new EventArgs(

@@ -34,6 +34,7 @@ class CartItem extends \Eccube\Entity\AbstractEntity
     private $object;
     //yhei
     private $assort;
+    private $assort_img;
 
     public function __construct()
     {
@@ -43,7 +44,7 @@ class CartItem extends \Eccube\Entity\AbstractEntity
     {
         //yhei
         //return array('class_name', 'class_id', 'price', 'quantity');
-        return array('class_name', 'class_id', 'price', 'quantity', 'assort');
+        return array('class_name', 'class_id', 'price', 'quantity', 'assort', 'assort_img');
     }
     
     //yhei
@@ -57,6 +58,19 @@ class CartItem extends \Eccube\Entity\AbstractEntity
     public function getAssort()
     {
         return $this->assort;
+    }
+    
+    //yhei
+    public function setAssortImg($assort_img)
+    {
+        $this->assort_img = $assort_img;
+        return $this;
+    }
+    
+    //yhei
+    public function getAssortImg()
+    {
+        return $this->assort_img;
     }
 
     /**

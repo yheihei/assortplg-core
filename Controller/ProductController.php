@@ -124,7 +124,8 @@ class ProductController
                             $addCartData['assort3'],
                             $addCartData['assort4'],
                             $addCartData['assort5'],
-                            $addCartData['assort6'])->save();
+                            $addCartData['assort6'],
+                            $addCartData['assort_img'])->save();
                         
                     } catch (CartException $e) {
                         $app->addRequestError($e->getMessage());
@@ -291,7 +292,8 @@ class ProductController
                             $addCartData['assort3'],
                             $addCartData['assort4'],
                             $addCartData['assort5'],
-                            $addCartData['assort6'])->save();
+                            $addCartData['assort6'],
+                            $addCartData['assort_img'])->save();
                         
                     } catch (CartException $e) {
                         log_info('カート追加エラー', array($e->getMessage()));

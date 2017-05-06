@@ -217,7 +217,8 @@ class CartService
         $assort3,
         $assort4,
         $assort5,
-        $assort6)
+        $assort6,
+        $assort_img)
     {
         $quantity += $this->getProductQuantity($productClassId);
         //yhei
@@ -232,7 +233,7 @@ class CartService
         //$this->setProductQuantity($productClassId, $quantity);
         //$this->setProductQuantity($productClassId, $quantity, $assort1);
         $this->setProductQuantity($productClassId, $quantity,
-            $assort
+            $assort, $assort_img
         );
 
         return $this;
@@ -260,10 +261,10 @@ class CartService
      */
     //yhei
     //public function setProductQuantity($ProductClass, $quantity)
-    public function setProductQuantity($ProductClass, $quantity, $assort)
+    public function setProductQuantity($ProductClass, $quantity, $assort, $assort_img)
     {
-        dump('setProductQuantity yhei');
-        dump($assort);
+        //dump('setProductQuantity yhei');
+        //dump($assort);
         if (!$ProductClass instanceof ProductClass) {
             $ProductClass = $this->entityManager
                 ->getRepository('Eccube\Entity\ProductClass')
@@ -339,6 +340,7 @@ class CartService
             //yhei
             if(!is_null($assort)) {
                 $CartItem->setAssort($assort);
+                $CartItem->setAssortImg($assort_img);
             }
 
             $this->cart->setCartItem($CartItem);

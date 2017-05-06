@@ -188,7 +188,22 @@ $(function() {
                             {% for orderDetail in Order.orderDetails %}
                             <div id="cart_box_list__item_box--{{ loop.index }}" class="item_box tr">
                                 <div id="cart_box_list__item--{{ loop.index }}" class="td table">
-                                    <div id="cart_box_list__photo--{{ loop.index }}" class="item_photo"><img src="{{ app.config.image_save_urlpath }}/{{ orderDetail.product.MainListImage|no_image_product }}" alt="{{ orderDetail.productName }}" /></div>
+                                    <div id="cart_box_list__photo--{{ loop.index }}" class="item_photo">
+                                        <!-- yhei -->
+                                        <!-- <img src="{{ app.config.image_save_urlpath }}/{{ orderDetail.product.MainListImage|no_image_product }}" alt="{{ orderDetail.productName }}" /> -->
+                                        <!-- yhei -->
+                                        {% set displayAssort = false %}
+                                        {% for assortCartItem in AssortCartItems %}
+                                            {% if assortCartItem.object.Product.id == orderDetail.Product.id %}
+                                                <img src="{{ assortCartItem.assort_img }}" alt="{{ orderDetail.productName }}" />
+                                                {% set displayAssort = true %}
+                                            {% endif %}
+                                        <!-- yhei -->
+                                        {% endfor %}
+                                        {% if displayAssort == false %}
+                                            <img src="{{ app.config.image_save_urlpath }}/{{ orderDetail.product.MainListImage|no_image_product }}" alt="{{ orderDetail.productName }}" />
+                                        {% endif %}
+                                    </div>
                                     <dl id="cart_box_list__detail--{{ loop.index }}" class="item_detail">
                                         <!-- yhei
                                         <dt id="cart_box_list__name--{{ loop.index }}" class="item_name text-default">{{ orderDetail.productName }}</dt>
@@ -265,7 +280,22 @@ $(function() {
                                 {% for shipmentItem in shipping.shipmentItems %}
                                     <div id="shipping_confirm_box__item--{{ idx }}_{{ shipmentItem.id }}" class="item_box tr">
                                         <div id="shipping_box__body_inner--{{ idx }}_{{ shipmentItem.id }}" class="td table">
-                                            <div id="shipping_box__photo--{{ idx }}_{{ shipmentItem.id }}" class="item_photo"><img src="{{ app.config.image_save_urlpath }}/{{ shipmentItem.product.MainListImage|no_image_product }}" alt="{{ shipmentItem.productName }}" /></div>
+                                            <div id="shipping_box__photo--{{ idx }}_{{ shipmentItem.id }}" class="item_photo">
+                                                <!-- yhei -->
+                                                <!-- <img src="{{ app.config.image_save_urlpath }}/{{ shipmentItem.product.MainListImage|no_image_product }}" alt="{{ shipmentItem.productName }}" /> -->
+                                                <!-- yhei -->
+                                                {% set displayAssort = false %}
+                                                {% for assortCartItem in AssortCartItems %}
+                                                    {% if assortCartItem.object.Product.id == shipmentItem.Product.id %}
+                                                        <img src="{{ assortCartItem.assort_img }}" alt="{{ shipmentItem.productName }}" />
+                                                        {% set displayAssort = true %}
+                                                    {% endif %}
+                                                <!-- yhei -->
+                                                {% endfor %}
+                                                {% if displayAssort == false %}
+                                                    <img src="{{ app.config.image_save_urlpath }}/{{ shipmentItem.product.MainListImage|no_image_product }}" alt="{{ shipmentItem.productName }}" />
+                                                {% endif %}
+                                            </div>
                                             <dl id="shipping_box__detail--{{ idx }}_{{ shipmentItem.id }}" class="item_detail">
                                                 <!-- yhei
                                                 <dt id="shipping_box__name--{{ idx }}_{{ shipmentItem.id }}" class="item_name text-default">{{ shipmentItem.productName }}</dt>
