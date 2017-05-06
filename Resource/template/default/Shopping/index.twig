@@ -199,7 +199,9 @@ $(function() {
                                             {% for assortCartItem in AssortCartItems %}
                                                 {% if assortCartItem.object.Product.id == orderDetail.Product.id %}
                                                     [商品id:{{ orderDetail.Product.id }}] {{ orderDetail.productName }}
-                                                    <br> {{ assortCartItem.assort1 }}
+                                                    {% for assortname in assortCartItem.assort %}
+                                                    <br>{{ assortname }}
+                                                    {% endfor %}
                                                     {% set displayAssort = true %}
                                                 {% endif %}
                                                 <!-- yhei -->
@@ -274,7 +276,9 @@ $(function() {
                                                     {% for assortCartItem in AssortCartItems %}
                                                         {% if assortCartItem.object.Product.id == shipmentItem.Product.id %}
                                                             [商品id:{{ shipmentItem.Product.id }}] {{ shipmentItem.productName }}
-                                                            <br> {{ assortCartItem.assort1 }}
+                                                            {% for assortname in assortCartItem.assort %}
+                                                            <br>{{ assortname }}
+                                                            {% endfor %}
                                                             {% set displayAssort = true %}
                                                         {% endif %}
                                                         <!-- yhei -->

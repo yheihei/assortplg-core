@@ -210,12 +210,30 @@ class CartService
      */
     //yhei
     //public function addProduct($productClassId, $quantity = 1)
-    public function addProduct($productClassId, $quantity = 1, $assort1)
+    //public function addProduct($productClassId, $quantity = 1, $assort1)
+    public function addProduct($productClassId, $quantity = 1,
+        $assort1,
+        $assort2,
+        $assort3,
+        $assort4,
+        $assort5,
+        $assort6)
     {
         $quantity += $this->getProductQuantity($productClassId);
         //yhei
+        $assort = array(
+            $assort1,
+            $assort2,
+            $assort3,
+            $assort4,
+            $assort5,
+            $assort6,
+        );
         //$this->setProductQuantity($productClassId, $quantity);
-        $this->setProductQuantity($productClassId, $quantity, $assort1);
+        //$this->setProductQuantity($productClassId, $quantity, $assort1);
+        $this->setProductQuantity($productClassId, $quantity,
+            $assort
+        );
 
         return $this;
     }
@@ -242,8 +260,10 @@ class CartService
      */
     //yhei
     //public function setProductQuantity($ProductClass, $quantity)
-    public function setProductQuantity($ProductClass, $quantity, $assort1)
+    public function setProductQuantity($ProductClass, $quantity, $assort)
     {
+        dump('setProductQuantity yhei');
+        dump($assort);
         if (!$ProductClass instanceof ProductClass) {
             $ProductClass = $this->entityManager
                 ->getRepository('Eccube\Entity\ProductClass')
@@ -317,7 +337,9 @@ class CartService
                 ->setPrice($ProductClass->getPrice02IncTax())
                 ->setQuantity($quantity);
             //yhei
-            if(!is_null($assort1)) $CartItem->setAssort1($assort1);
+            if(!is_null($assort)) {
+                $CartItem->setAssort($assort);
+            }
 
             $this->cart->setCartItem($CartItem);
         }

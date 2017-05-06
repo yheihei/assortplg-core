@@ -140,7 +140,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                             </dd>
                                             <!-- yhei -->
                                             <!-- <dd id="cart_item_list__item_price" class="item_price">￥{{ CartItem.price|number_format }}</dd> -->
-                                            <dd id="cart_item_list__item_price" class="item_price">￥{{ CartItem.price|number_format }}<br>{{ CartItem.Assort1 }}</dd>
+                                            <dd id="cart_item_list__item_price" class="item_price">￥{{ CartItem.price|number_format }}
+                                                {% for Assort in CartItem.Assort %}
+                                                <br>{{ Assort }}
+                                                {% endfor %}
+                                            </dd>
                                             <dd id="cart_item_list__item_subtotal" class="item_subtotal">小計：￥{{ CartItem.total_price|number_format }}</dd>
                                         </dl>
                                     </div>

@@ -80,6 +80,7 @@ class AddCartType extends AbstractType
                 ),
             ))
             //yhei
+            /*
             ->add('assort1','text',
                 array(
                     'label' => 'アソート1',
@@ -88,6 +89,37 @@ class AddCartType extends AbstractType
                     'attr' => array(
                         'placeholder' => 'アソートの名前',
                     ),
+                )
+            )
+            */
+            ->add('assort1','hidden',
+                array(
+                    'data' => null,
+                )
+            )
+            ->add('assort2','hidden',
+                array(
+                    'data' => null,
+                )
+            )
+            ->add('assort3','hidden',
+                array(
+                    'data' => null,
+                )
+            )
+            ->add('assort4','hidden',
+                array(
+                    'data' => null,
+                )
+            )
+            ->add('assort5','hidden',
+                array(
+                    'data' => null,
+                )
+            )
+            ->add('assort6','hidden',
+                array(
+                    'data' => null,
                 )
             );
 

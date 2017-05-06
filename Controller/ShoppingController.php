@@ -133,7 +133,7 @@ class ShoppingController extends AbstractController
         $AssortItems = null;
         foreach($cartService->getCart()->getCartItems() as $Item) {
             // Assortの商品があるかチェック
-            if(!is_null($Item->getAssort1())) {
+            if(!is_null($Item->getAssort())) {
                 // Assortの商品があればarrayに入れる
                 $AssortItems[] = $Item;
             }
@@ -251,7 +251,7 @@ class ShoppingController extends AbstractController
         $AssortItems = null;
         foreach($cartService->getCart()->getCartItems() as $Item) {
             // Assortの商品があるかチェック
-            if(!is_null($Item->getAssort1())) {
+            if(!is_null($Item->getAssort())) {
                 // Assortの商品があればarrayに入れる
                 $AssortItems[] = $Item;
             }

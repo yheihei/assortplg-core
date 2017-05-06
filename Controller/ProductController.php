@@ -117,7 +117,14 @@ class ProductController
                     try {
                         //yhei
                         //$app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'])->save();
-                        $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],  $addCartData['assort1'])->save();
+                        //$app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],  $addCartData['assort1'])->save();
+                        $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],
+                            $addCartData['assort1'],
+                            $addCartData['assort2'],
+                            $addCartData['assort3'],
+                            $addCartData['assort4'],
+                            $addCartData['assort5'],
+                            $addCartData['assort6'])->save();
                         
                     } catch (CartException $e) {
                         $app->addRequestError($e->getMessage());
@@ -242,7 +249,7 @@ class ProductController
 
             if ($form->isValid()) {
                 $addCartData = $form->getData();
-                //dump($addCartData); //yhei
+                dump($addCartData); //yhei
                 if ($addCartData['mode'] === 'add_favorite') {
                     if ($app->isGranted('ROLE_USER')) {
                         $Customer = $app->user();
@@ -277,7 +284,15 @@ class ProductController
                     try {
                         //yhei
                         //$app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'])->save();
-                        $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],  $addCartData['assort1'])->save();
+                        //$app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],  $addCartData['assort1'])->save();
+                        $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],
+                            $addCartData['assort1'],
+                            $addCartData['assort2'],
+                            $addCartData['assort3'],
+                            $addCartData['assort4'],
+                            $addCartData['assort5'],
+                            $addCartData['assort6'])->save();
+                        
                     } catch (CartException $e) {
                         log_info('カート追加エラー', array($e->getMessage()));
                         $app->addRequestError($e->getMessage());

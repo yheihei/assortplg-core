@@ -33,7 +33,7 @@ class CartItem extends \Eccube\Entity\AbstractEntity
     private $quantity;
     private $object;
     //yhei
-    private $assort1;
+    private $assort;
 
     public function __construct()
     {
@@ -43,20 +43,20 @@ class CartItem extends \Eccube\Entity\AbstractEntity
     {
         //yhei
         //return array('class_name', 'class_id', 'price', 'quantity');
-        return array('class_name', 'class_id', 'price', 'quantity', 'assort1');
+        return array('class_name', 'class_id', 'price', 'quantity', 'assort');
     }
     
     //yhei
-    public function setAssort1($assort1)
+    public function setAssort($assort)
     {
-        $this->assort1 = $assort1;
+        $this->assort = $assort;
         return $this;
     }
     
     //yhei
-    public function getAssort1()
+    public function getAssort()
     {
-        return $this->assort1;
+        return $this->assort;
     }
 
     /**
