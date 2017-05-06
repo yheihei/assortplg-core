@@ -78,8 +78,8 @@ class AddCartType extends AbstractType
                 'constraints' => array(
                     new Assert\Regex(array('pattern' => '/^\d+$/')),
                 ),
-            ))
-            //yhei
+            ));
+            //yhei plugin側へ移動
             /*
             ->add('assort1','text',
                 array(
@@ -91,7 +91,7 @@ class AddCartType extends AbstractType
                     ),
                 )
             )
-            */
+            
             ->add('assort1','hidden',
                 array(
                     'data' => null,
@@ -127,6 +127,7 @@ class AddCartType extends AbstractType
                     'data' => null,
                 )
             );
+            */
 
         if ($Product->getStockFind()) {
             $builder
