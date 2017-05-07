@@ -305,7 +305,7 @@ class ProductController
                     
                     //yhei Assortが渡ってきていない場合のnullチェック
                     $isAssort = true;
-                    dump($addCartData);
+                    //dump($addCartData);
                     for($i = 1; $i < 7; $i++) {
                         if(!isset($addCartData['assort'. $i]) ) {
                             $isAssort = false;
