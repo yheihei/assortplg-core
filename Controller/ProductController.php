@@ -113,19 +113,40 @@ class ProductController
 
                 if ($addCartForm->isValid()) {
                     $addCartData = $addCartForm->getData();
+                    
+                    //yhei Assortが渡ってきていない場合のnullチェック
+                    $isAssort = true;
+                    //dump($addCartData);
+                    for($i = 1; $i < 7; $i++) {
+                        if(!isset($addCartData['assort'. $i]) ) {
+                            $isAssort = false;
+                            break;
+                        }
+                    }
 
                     try {
                         //yhei
                         //$app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'])->save();
                         //$app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],  $addCartData['assort1'])->save();
-                        $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],
-                            $addCartData['assort1'],
-                            $addCartData['assort2'],
-                            $addCartData['assort3'],
-                            $addCartData['assort4'],
-                            $addCartData['assort5'],
-                            $addCartData['assort6'],
-                            $addCartData['assort_img'])->save();
+                        if($isAssort) {
+                            $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],
+                                $addCartData['assort1'],
+                                $addCartData['assort2'],
+                                $addCartData['assort3'],
+                                $addCartData['assort4'],
+                                $addCartData['assort5'],
+                                $addCartData['assort6'],
+                                $addCartData['assort_img'])->save();
+                        } else {
+                            $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                                null)->save();
+                        }
                         
                     } catch (CartException $e) {
                         $app->addRequestError($e->getMessage());
@@ -281,19 +302,40 @@ class ProductController
                 } elseif ($addCartData['mode'] === 'add_cart') {
 
                     log_info('カート追加処理開始', array('product_id' => $Product->getId(), 'product_class_id' => $addCartData['product_class_id'], 'quantity' => $addCartData['quantity']));
-
+                    
+                    //yhei Assortが渡ってきていない場合のnullチェック
+                    $isAssort = true;
+                    dump($addCartData);
+                    for($i = 1; $i < 7; $i++) {
+                        if(!isset($addCartData['assort'. $i]) ) {
+                            $isAssort = false;
+                            break;
+                        }
+                    }
+                    
                     try {
                         //yhei
                         //$app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'])->save();
                         //$app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],  $addCartData['assort1'])->save();
-                        $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],
-                            $addCartData['assort1'],
-                            $addCartData['assort2'],
-                            $addCartData['assort3'],
-                            $addCartData['assort4'],
-                            $addCartData['assort5'],
-                            $addCartData['assort6'],
-                            $addCartData['assort_img'])->save();
+                        if($isAssort) {
+                            $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],
+                                $addCartData['assort1'],
+                                $addCartData['assort2'],
+                                $addCartData['assort3'],
+                                $addCartData['assort4'],
+                                $addCartData['assort5'],
+                                $addCartData['assort6'],
+                                $addCartData['assort_img'])->save();
+                        } else {
+                            $app['eccube.service.cart']->addProduct($addCartData['product_class_id'], $addCartData['quantity'],
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                                null)->save();
+                        }
                         
                     } catch (CartException $e) {
                         log_info('カート追加エラー', array($e->getMessage()));
