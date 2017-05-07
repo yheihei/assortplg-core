@@ -213,7 +213,7 @@ $(function() {
                                             {% set displayAssort = false %}
                                             {% for assortCartItem in AssortCartItems %}
                                                 {% if assortCartItem.object.Product.id == orderDetail.Product.id %}
-                                                    [商品id:{{ orderDetail.Product.id }}] {{ orderDetail.productName }}
+                                                    {{ orderDetail.productName }}
                                                     {% for assortname in assortCartItem.assort %}
                                                     <br>{{ assortname }}
                                                     {% endfor %}
@@ -222,7 +222,7 @@ $(function() {
                                                 <!-- yhei -->
                                             {% endfor %}
                                             {% if displayAssort == false %}
-                                                [商品id:{{ orderDetail.Product.id }}] {{ orderDetail.productName }}
+                                                {{ orderDetail.productName }}
                                             {% endif %}
                                         </dt>
                                         <dd id="cart_box_list__class_category--{{ loop.index }}" class="item_pattern small">
@@ -305,7 +305,7 @@ $(function() {
                                                     {% set displayAssort = false %}
                                                     {% for assortCartItem in AssortCartItems %}
                                                         {% if assortCartItem.object.Product.id == shipmentItem.Product.id %}
-                                                            [商品id:{{ shipmentItem.Product.id }}] {{ shipmentItem.productName }}
+                                                            {{ shipmentItem.productName }}
                                                             {% for assortname in assortCartItem.assort %}
                                                             <br>{{ assortname }}
                                                             {% endfor %}
@@ -314,7 +314,7 @@ $(function() {
                                                         <!-- yhei -->
                                                     {% endfor %}
                                                     {% if displayAssort == false %}
-                                                        [商品id:{{ shipmentItem.Product.id }}] {{ shipmentItem.productName }}
+                                                        {{ shipmentItem.productName }}
                                                     {% endif %}
                                                 </dt>
                                                 <dd id="shipping_box__class_category--{{ idx }}_{{ shipmentItem.id }}" class="item_pattern small">
